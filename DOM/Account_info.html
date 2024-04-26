@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Information</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Account Information</h2>
+
+<table id="accountTable">
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Account Name</th>
+            <th>Account Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table body will be populated dynamically -->
+    </tbody>
+</table>
+
+<script>
+// Define array of account objects
+var accounts = [
+    { accountNo: 123456789, accountName: "John Doe", accountBalance: 5000 },
+    { accountNo: 987654321, accountName: "Alice Smith", accountBalance: 8000 },
+    { accountNo: 456789123, accountName: "Bob Johnson", accountBalance: 3000 }
+];
+
+// Get the table body to append rows
+var tableBody = document.getElementById("accountTable").getElementsByTagName("tbody")[0];
+
+// Loop through the array of accounts and create table rows
+accounts.forEach(function(account) {
+    var row = tableBody.insertRow();
+    var accountNoCell = row.insertCell(0);
+    var accountNameCell = row.insertCell(1);
+    var accountBalanceCell = row.insertCell(2);
+
+    accountNoCell.textContent = account.accountNo;
+    accountNameCell.textContent = account.accountName;
+    accountBalanceCell.textContent = account.accountBalance;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Names</title>
+</head>
+<body>
+
+<div id="memberNames"></div>
+
+<script>
+// Assume you have an array of member names
+var members = ["John", "Jane", "Alice", "Bob", "Emily"];
+
+// Convert array elements to uppercase and join with comma
+var memberNames = members.map(function(name) {
+    return name.toUpperCase();
+}).join(", ");
+
+// Display the names in the current document window
+document.getElementById("memberNames").innerText = memberNames;
+</script>
+
+</body>
+</html>

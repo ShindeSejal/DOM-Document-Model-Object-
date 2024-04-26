@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
+
+<h2>Registered Users</h2>
+
+<table id="registeredUsers">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table body will be populated dynamically -->
+    </tbody>
+</table>
+
+<script>
+function submitForm() {
+    // Get form values
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var email = document.getElementById("email").value;
+
+    // Create custom object with form details
+    var userDetails = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+    };
+
+    // Add custom object to array
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    registeredUsers.push(userDetails);
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    // Display registered users in table
+    displayRegisteredUsers();
+}
+
+function displayRegisteredUsers() {
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    var tableBody = document.getElementById("registeredUsers").getElementsByTagName("tbody")[0];
+    tableBody.innerHTML = "";
+
+    registeredUsers.forEach(function(user) {
+        var row = tableBody.insertRow();
+        var firstNameCell = row.insertCell(0);
+        var lastNameCell = row.insertCell(1);
+        var emailCell = row.insertCell(2);
+
+        firstNameCell.textContent = user.firstName;
+        lastNameCell.textContent = user.lastName;
+        emailCell.textContent = user.email;
+    });
+}
+
+// Display registered users on page load
+displayRegisteredUsers();
+</script>
+
+</body>
+</html>

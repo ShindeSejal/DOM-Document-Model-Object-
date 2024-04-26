@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Insurance Plan</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Employee Insurance Plan</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee No</th>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Insurance Plan</th>
+        </tr>
+    </thead>
+    <tbody id="employeeTableBody">
+        <!-- Table body will be populated dynamically -->
+    </tbody>
+</table>
+
+<script>
+// Define array of employee objects
+var employees = [
+    { empNo: 1, empName: "John Doe", department: 10, designation: "Clerk", salary: 30000, insurancePlan: "Health" },
+    { empNo: 2, empName: "Alice Smith", department: 20, designation: "Analyst", salary: 50000, insurancePlan: "Life" },
+    { empNo: 3, empName: "Bob Johnson", department: 30, designation: "Programmer", salary: 60000, insurancePlan: "Accident" },
+    { empNo: 4, empName: "Emily Brown", department: 40, designation: "Manager", salary: 80000, insurancePlan: "Health" },
+    { empNo: 5, empName: "David Wilson", department: 50, designation: "Manager", salary: 90000, insurancePlan: "Life" }
+];
+
+// Get the table body to append rows
+var tableBody = document.getElementById("employeeTableBody");
+
+// Loop through the array of employees and create table rows
+employees.forEach(function(employee) {
+    var row = tableBody.insertRow();
+    var empNoCell = row.insertCell(0);
+    var empNameCell = row.insertCell(1);
+    var departmentCell = row.insertCell(2);
+    var designationCell = row.insertCell(3);
+    var salaryCell = row.insertCell(4);
+    var insurancePlanCell = row.insertCell(5);
+
+    empNoCell.textContent = employee.empNo;
+    empNameCell.textContent = employee.empName;
+    departmentCell.textContent = getDepartmentName(employee.department);
+    designationCell.textContent = employee.designation;
+    salaryCell.textContent = employee.salary;
+    insurancePlanCell.textContent = employee.insurancePlan;
+});
+
+// Function to get department name based on department code
+function getDepartmentName(deptCode) {
+    switch(deptCode) {
+        case 10:
+            return "Finance";
+        case 20:
+            return "HR";
+        case 30:
+            return "IT";
+        case 40:
+            return "Operations";
+        case 50:
+            return "Sales";
+        default:
+            return "Unknown";
+    }
+}
+</script>
+
+</body>
+</html>

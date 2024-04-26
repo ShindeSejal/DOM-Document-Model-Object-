@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruits List with Index</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Fruits List with Index</h2>
+
+<ul id="fruitsList">
+    <!-- List items will be populated dynamically -->
+</ul>
+
+<script>
+// Array of fruits
+var fruits = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+
+// Get the ul element to append list items
+var fruitsList = document.getElementById("fruitsList");
+
+// Loop through the array of fruits and create list items with index numbers
+fruits.forEach(function(fruit, index) {
+    var listItem = document.createElement("li");
+    listItem.textContent = index + 1 + ". " + fruit;
+    fruitsList.appendChild(listItem);
+});
+</script>
+
+</body>
+</html>
